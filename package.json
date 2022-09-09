@@ -1,0 +1,28 @@
+{
+  "name": "excercise_2_express",
+  "version": "1.0.0",
+  "description": "Excercise II, register users, uploader user, assign tasks to users, task progress monitoring, uploader status according to the time in which they are completed: assign (Active), within the requested time range(Completed), after the requested time range (Late) and canceled tasks(Canceled).",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon start server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raizen-7/Excercise_2_Express.git"
+  },
+  "author": "Fermin Antonio Yanes Herrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raizen-7/Excercise_2_Express/issues"
+  },
+  "homepage": "https://github.com/Raizen-7/Excercise_2_Express#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

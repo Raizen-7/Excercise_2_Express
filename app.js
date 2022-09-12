@@ -14,7 +14,7 @@ app.use(express.json());
 
 //Endpoints
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/task');
+app.use('/api/v1/tasks');
 
 
 module.exports = { app };

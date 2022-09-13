@@ -2,14 +2,10 @@ const express = require('express');
 
 //Routers
 
-
-//Utils
-const { db } = require('./utils/database.util');
-
 // init express app 
 const app = express();
 
-//Enable Express app to recive JSON data
+//Enable Express app to recive JSON
 app.use(express.json());
 
 //Endpoints

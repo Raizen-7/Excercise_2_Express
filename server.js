@@ -5,10 +5,10 @@ const { app } = require('./app');
 //Util
 const { db } = require('./utils/database.util');
 
-dotenv.config({ path: './.env' });
-
-//Enable Express app to recive JSON
+//Enable Express app to recive JSON data
 app.use(express.json());
+
+dotenv.config({ path: './.env' })
 
 const startServer = async ()=>{
     try{
@@ -18,7 +18,7 @@ const startServer = async ()=>{
         //port server to listen
         const PORT = process.env.PORT || 5000;
         app.listen(PORT, ()=> {
-            console.log(`Server on and connected to db with authenticated! on: ${PORT}`);
+            console.log('Server on Express App!');
         })
     } catch(error){
         console.log(error);

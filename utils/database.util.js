@@ -6,7 +6,7 @@ dotenv.config({ path: './.env' });
 //Data base connection
 const db = new Sequelize({
     dialect: 'postgres',
-    host: process.env.DB_HOST,
+    host: process.env.DB_HOTS,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,

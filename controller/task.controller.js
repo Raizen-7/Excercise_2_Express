@@ -1,5 +1,4 @@
-const { json } = require('sequelize');
-const {  } = require('../models/task.model');
+const { Tasks } = require('../models/task.model');
 
 const getAllTasks = async (req, res) => {
 	try {
@@ -22,7 +21,7 @@ const createTask = async (req, res) => {
 	try {
 		const { title, userId, limitDate, startDate, finishDate } = req.body;
 
-		const newTask = await Task.create({ title, userId, limitDate, startDate, finishDate });
+		const newTask = await Tasks.create({ title, userId, limitDate, startDate, finishDate });
 
 
 		res.status(201).json({
@@ -35,8 +34,49 @@ const createTask = async (req, res) => {
 };
 
 const getTasksByStatus = async (req, res)=>{
-    res.status(200),json({});
-}
+
+};
+
+const updateTask = async (req, res) => {
+	try {
+		const { task } = req;
+		const { finishDate } = req.body;
+	  
+		// Get numerical values of the dates
+		const limitDateNum = new Date(task.limitDate).getTime();
+		const finishDateNum = new Date(finishDate).getTime();
+	  
+		const remainingTime = limitDateNum - finishDateNum;
+	  
+		if (remainingTime > 0) {
+		  await task.update({ finishDate, status: 'completed' });
+		} else if (remainingTime < 0) {
+		  await task.update({ finishDate, status: 'late' });
+		}
+	  
+		res.status(200).json({
+		  status: 'success',
+		  task,
+		});
+		
+	} catch (error) {
+		console.log(error);
+	}
+  };
+
+  const deleteTask = async (req, res, next) => {
+	try {
+		const { task } = req;
+  
+		await task.update({ status: 'cancelled' });
+	  
+		res.status(200).json({
+		  status: 'success',
+		});
+	} catch (error) {
+		console.log(error);
+	}
+  };
 
 
 
@@ -44,5 +84,7 @@ module.exports = {
 	getAllTasks,
 	createTask,
 	getTasksByStatus,
+	updateTask,
+	deleteTask
 	
 };

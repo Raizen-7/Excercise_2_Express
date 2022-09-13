@@ -17,7 +17,7 @@ const Task = db.define('task', {
 	},
 	limitDate: {
 		type: DataTypes.DATE,
-		allowNull: true,
+		allowNull: false,
 	},
 	startDate: {
 		type: DataTypes.DATE,
@@ -25,11 +25,10 @@ const Task = db.define('task', {
 	},
     finishDate: {
 		type: DataTypes.DATE,
-		allowNull: false,
+		allowNull: true,
 	},
 	status: {
 		type: DataTypes.STRING,
-		allowNull: false,
 		defaultValue: 'active',
 	},
 });

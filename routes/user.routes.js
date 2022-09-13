@@ -6,7 +6,7 @@ const {
 	createUser,
 	updateUser,
 	deleteUser,
-} = require('../controllers/users.controller');
+} = require('../controller/user.controller');
 
 // Middlewares
 const { userExists } = require('../middleware/user.middleware');

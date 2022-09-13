@@ -1,12 +1,12 @@
 const express = require('express');
 
 //Middleware
-const {  } = require('../middleware/task.middleware');
+const { taskExists } = require('../middleware/task.middleware');
 
 //controllers
 const {
-    createTask,
     getAllTasks,
+    createTask,
     getTasksByStatus,
     updateTask,
     deleteTask,
@@ -22,7 +22,7 @@ router.get('/:status', getTasksByStatus);
 
 router
     .router('/:id')
-    .patch(updateTask)
-    .delete(deleteTask);
+    .patch( taskExists,updateTask )
+    .delete( taskExists, deleteTask );
 
 module.exports = { tasksRouter: router };

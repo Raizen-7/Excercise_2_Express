@@ -22,7 +22,7 @@ router.get('/:status', getTasksByStatus);
 
 router
     .router('/:id')
-    .patch( taskExists, updateTask )
+    .patch( taskExists,updateTask )
     .delete( taskExists, deleteTask );
 
 module.exports = { tasksRouter: router };

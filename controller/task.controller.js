@@ -34,7 +34,23 @@ const createTask = async (req, res) => {
 };
 
 const getTasksByStatus = async (req, res)=>{
+	const { status } = req.params;
 
+	const arrayStatus = ['active', 'completed', 'late', 'cancelled'];
+
+	const statusFound = arrayStatus.find(validStatus =>  validStatus === status );
+
+	if(!statusFound){
+		try {
+			const tasks = await Tasks.findAll({ where: { status } });
+			
+			res.status(200).json({ tasks });
+
+		} catch (error) {
+			console.log(`${error} status does not match the expected statuses`);
+		}
+	}
+	
 };
 
 const updateTask = async (req, res) => {
@@ -64,7 +80,7 @@ const updateTask = async (req, res) => {
 	}
   };
 
-  const deleteTask = async (req, res, next) => {
+  const deleteTask = async (req, res) => {
 	try {
 		const { task } = req;
   
